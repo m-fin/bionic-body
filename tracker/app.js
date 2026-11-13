@@ -1,5 +1,8 @@
 let D;const $=id=>document.getElementById(id);
-fetch('data.json').then(r=>r.json()).then(d=>{D=d;init()});
+fetch('data.json').then(r=>{if(!r.ok)throw new Error('HTTP '+r.status);return r.json()}).then(d=>{D=d;init()})
+ .catch(e=>{$('pct').textContent='–';$('cards').innerHTML='<p class="err">Couldn\'t load the tracker data ('+String(e.message||e).replace(/[<&>]/g,'')+'). If you opened this file directly, serve the folder instead (for example <code>python3 -m http.server</code>) or use the live site.</p>'});
+// search only what a reader can see on the card, not JSON keys or URLs (so "url" or "level" don't match everything)
+const text=e=>[e.system,e.type,e.example,e.status,e.bottleneck,e.goal||'',D.levels[e.level],e.aboveNeck?'above the neck':'',...e.sources.map(x=>x.label)].join(' ').toLowerCase();
 function init(){$('updated').textContent=D.updated;
  $('legend').textContent='Readiness: '+Object.entries(D.levels).map(([k,v])=>k+' = '+v).join(' · ');
  const n=D.entries.length,sum=D.entries.reduce((a,e)=>a+e.level,0),pct=Math.round(sum/(n*5)*100);
@@ -8,7 +11,7 @@ function init(){$('updated').textContent=D.updated;
  ['sort','filter','q'].forEach(i=>$(i).addEventListener('input',render));render()}
 function render(){const s=$('sort').value,f=$('filter').value,q=$('q').value.toLowerCase();
  let L=D.entries.filter(e=>f==='all'||(f==='4'?e.level>=4:f==='2'?e.level>=2&&e.level<=3:e.level<=1))
-  .filter(e=>!q||JSON.stringify(e).toLowerCase().includes(q));
+  .filter(e=>!q||text(e).includes(q.trim()));
  L.sort((a,b)=>s==='name'?a.system.localeCompare(b.system):s==='level-asc'?a.level-b.level:b.level-a.level);
  $('cards').innerHTML=L.map(e=>`<article class="card"><h3>${e.system}<span class="lvl ${e.level<4?'low':''}">${e.level}/5 · ${D.levels[e.level]}</span></h3>
  <div class="dots">${[1,2,3,4,5].map(i=>`<i class="${i<=e.level?'on':''}"></i>`).join('')}</div>
