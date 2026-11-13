@@ -472,7 +472,7 @@ body.static #hint{display:none}
 <button class="navbtn" id="prev" aria-label="Previous slide">‹</button>
 <button class="navbtn" id="next" aria-label="Next slide">›</button>
 <div id="hint">← → or click to navigate</div>
-<div id="ui"><span class="brand"><b>●</b> The Bionic Body · Matthew "Frog" Finley</span><span id="count">1 / 14</span></div>
+<footer id="ui"><span class="brand"><b>●</b> The Bionic Body · Matthew "Frog" Finley</span><span id="count">1 / 14</span></footer>
 <div id="bar"></div>
 
 <script>
@@ -508,6 +508,8 @@ body.static #hint{display:none}
   function go(i,push){
     i=Math.max(0,Math.min(n-1,i));
     slides[cur].classList.remove('active');cur=i;slides[cur].classList.add('active');
+    // only the visible slide is focusable/readable (unless ?static shows them all)
+    if(!document.body.classList.contains('static')) slides.forEach(function(sl,j){sl.inert=j!==cur;if(j===cur)sl.removeAttribute('aria-hidden');else sl.setAttribute('aria-hidden','true');});
     document.body.setAttribute('data-hole',slides[cur].getAttribute('data-hole')||'center');
     bar.style.width=((cur+1)/n*100)+'%';count.textContent=(cur+1)+' / '+n;
     if(push!==false) history.replaceState(null,'','#'+(cur+1));
@@ -518,6 +520,10 @@ body.static #hint{display:none}
   window.addEventListener('hashchange',function(){go(fromHash(),false);});
   document.addEventListener('keydown',function(e){
     var k=e.key;
+    // leave browser shortcuts (Alt+Left = back, Ctrl/Cmd+arrows) alone, and let Enter/Space activate
+    // the focused link or button (Enter on "Previous" used to go forward)
+    if(e.altKey||e.ctrlKey||e.metaKey) return;
+    if((k==='Enter'||k===' ')&&e.target.closest&&e.target.closest('a,button,input,select,textarea,summary')) return;
     if(['ArrowRight','ArrowDown','PageDown',' ','Enter'].indexOf(k)>-1){e.preventDefault();go(cur+1);}
     else if(['ArrowLeft','ArrowUp','PageUp','Backspace'].indexOf(k)>-1){e.preventDefault();go(cur-1);}
     else if(k==='Home'){go(0);} else if(k==='End'){go(n-1);}
