@@ -14,3 +14,4 @@ select,input{background:#0d0d0d;color:var(--ink);border:1px solid var(--line);bo
 .ex{color:var(--orange);font-weight:600;font-size:14px}.card p{margin:0;font-size:14px;color:var(--muted)}.tag{font-size:11px;color:var(--dim);text-transform:uppercase;letter-spacing:.1em}
 .goal{border-left:2px solid #9FB4FF;padding-left:8px;color:#9FB4FF!important}.src{font-size:12px;margin-top:auto}.src a{display:block}
 footer{color:var(--dim);font-size:13px;margin-top:40px;border-top:1px solid var(--line);padding-top:16px}
+.err{grid-column:1/-1;padding:1rem;border:1px solid #c55;border-radius:8px}

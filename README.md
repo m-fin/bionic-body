@@ -9,7 +9,7 @@ Live site: https://m-fin.github.io/bionic-body/
 - **[Deck](https://m-fin.github.io/bionic-body/deck/)** (`deck/index.html`): a slide deck making the case for longevity through replacement: fixing cells, bionic parts available today, what's coming next, and the people and projects pushing it forward.
 - **[Tracker](https://m-fin.github.io/bionic-body/tracker/)** (`tracker/`): rates 16 body systems from 0 to 5 on how close a real replacement is, from 0 (idea) to 5 (routine clinical use). Each entry lists an example device, its status, the main bottleneck, and dated sources. You can sort, filter by readiness level, and search.
 
-The tracker data lives in `tracker/data.json`, so updating a score or adding a source is a one-file change.
+The tracker data lives in `tracker/data.json`, so updating a score or adding a source is a one-file change. Run `node tests/validate-data.mjs` after editing it: it checks every entry has a 0–5 level, the card fields, and at least one dated https source (CI runs it on pull requests).
 
 ## Run it locally
 
