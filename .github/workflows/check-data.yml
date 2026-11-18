@@ -16,3 +16,4 @@ jobs:
         with:
           node-version: 20
       - run: node tests/validate-data.mjs
+      - run: node --test tests/view.test.mjs
