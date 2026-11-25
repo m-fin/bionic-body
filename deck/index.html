@@ -4,8 +4,24 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>The Bionic Body: Living Longer by Replacing Parts | Matthew "Frog" Finley</title>
-<meta name="description" content="A vision deck by Matthew "Frog" Finley (@matthew1): bionic replacement as a real, fast-moving path to longevity.">
-<meta name="author" content="Matthew "Frog" Finley (@matthew1)">
+<link rel="canonical" href="https://m-fin.github.io/bionic-body/deck/">
+<meta name="description" content="A vision deck by Matthew &quot;Frog&quot; Finley (@matthew1): bionic replacement as a real, fast-moving path to longevity.">
+<meta name="author" content="Matthew &quot;Frog&quot; Finley (@matthew1)">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="The Bionic Body">
+<meta property="og:url" content="https://m-fin.github.io/bionic-body/deck/">
+<meta property="og:title" content="The Bionic Body: Living Longer by Replacing Parts">
+<meta property="og:description" content="A vision deck by Matthew &quot;Frog&quot; Finley (@matthew1): bionic replacement as a real, fast-moving path to longevity.">
+<meta property="og:image" content="https://m-fin.github.io/bionic-body/share.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="The Bionic Body: longevity through replacement, by Matthew Frog Finley">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Bionic Body: Living Longer by Replacing Parts">
+<meta name="twitter:description" content="A vision deck by Matthew &quot;Frog&quot; Finley (@matthew1): bionic replacement as a real, fast-moving path to longevity.">
+<meta name="twitter:image" content="https://m-fin.github.io/bionic-body/share.png">
+<meta name="twitter:image:alt" content="The Bionic Body: longevity through replacement, by Matthew Frog Finley">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23050505'/%3E%3Ccircle cx='16' cy='16' r='9' fill='none' stroke='%23F7931A' stroke-width='2'/%3E%3Ccircle cx='16' cy='16' r='3.5' fill='%23F7931A'/%3E%3C/svg%3E">
 <style>
 :root{
   --bg:#000;
@@ -30,6 +46,9 @@
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{height:100%;background:var(--bg);color:var(--ink);font-family:var(--font);overflow:hidden;-webkit-font-smoothing:antialiased}
 a{color:inherit}
+a:focus-visible,button:focus-visible,.slide:focus-visible{outline:2px solid var(--orange);outline-offset:3px}
+.slide:focus-visible{outline-offset:-6px}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 
 /* ---------- Deep space backdrop ---------- */
 #space{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
@@ -89,7 +108,7 @@ p,li{font-size:var(--body);line-height:1.45;color:var(--muted)}
 
 /* Title */
 .s-title{align-items:flex-start}
-.s-title h1{font-size:clamp(40px,8.6vmin,128px);max-width:13ch}
+.s-title h2{font-size:clamp(40px,8.6vmin,128px);max-width:13ch;line-height:1.02;letter-spacing:-.03em}
 .s-title .by{margin-top:4vmin;display:flex;align-items:center;gap:18px;font-size:clamp(16px,2.2vmin,28px)}
 .s-title .by b{color:var(--ink)}
 .s-title .by span{color:var(--muted)}
@@ -199,7 +218,8 @@ p,li{font-size:var(--body);line-height:1.45;color:var(--muted)}
 #ui .brand b{color:var(--orange)}
 #bar{position:fixed;left:0;bottom:0;height:3px;background:var(--orange);z-index:6;transition:width .4s ease;box-shadow:0 0 12px var(--orange)}
 .navbtn{position:fixed;top:50%;transform:translateY(-50%);z-index:6;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:rgba(0,0,0,.5);color:var(--ink);font-size:20px;cursor:pointer;opacity:.0;transition:opacity .3s}
-body:hover .navbtn,.navbtn:focus-visible{opacity:.7}
+body:hover .navbtn{opacity:.7}
+.navbtn:focus-visible{opacity:1}
 .navbtn:hover{opacity:1;border-color:var(--orange);color:var(--orange)}
 #prev{left:12px}#next{right:12px}
 body.static .navbtn{display:none}
@@ -238,12 +258,13 @@ body.static #hint{display:none}
 <div id="space"><div class="hole"><div class="disk"></div><div class="ring"></div><div class="core"></div></div></div>
 <div class="vignette"></div>
 
-<main id="deck" aria-live="polite">
+<main id="deck">
+<h1 class="sr-only">The Bionic Body</h1>
 
 <!-- 1 -->
 <section class="slide s-title" data-hole="right" aria-label="Title">
   <div class="kicker">A vision deck · Oct 2026</div>
-  <h1>The Bionic Body: <span class="o">Living Longer</span> by Replacing Parts</h1>
+  <h2>The Bionic Body: <span class="o">Living Longer</span> by Replacing Parts</h2>
   <div class="by"><div class="avatar">F</div><div><b>Matthew "Frog" Finley</b><br><span>@matthew1 · x.com/matthew1</span></div></div>
 </section>
 
@@ -278,7 +299,7 @@ body.static #hint{display:none}
 <!-- 3 -->
 <section class="slide s-why" data-hole="corner" aria-label="Why I care">
   <div class="kicker">Why I care</div>
-  <p class="quote-big">My body is the <span class="o">least upgradable thing</span> I own.</p>
+  <h2 class="quote-big">My body is the <span class="o">least upgradable thing</span> I own.</h2>
   <div class="why-row">
     <div class="card"><div class="big">2×</div><h3>Broken bones</h3><p>I’ve broken bones twice. Every time, the fix was “wait and hope it heals.”</p></div>
     <div class="card"><div class="big">0</div><h3>Upgrades</h3><p>My phone and my car get updates. My skeleton is still running factory firmware.</p></div>
@@ -471,8 +492,7 @@ body.static #hint{display:none}
 
 <button class="navbtn" id="prev" aria-label="Previous slide">‹</button>
 <button class="navbtn" id="next" aria-label="Next slide">›</button>
-<div id="hint">← → or click to navigate</div>
-<footer id="ui"><span class="brand"><b>●</b> The Bionic Body · Matthew "Frog" Finley</span><span id="count">1 / 14</span></footer>
+<footer id="ui"><span class="brand"><b>●</b> The Bionic Body · Matthew "Frog" Finley</span><span id="count">1 / 14</span><p id="hint">← → or click to navigate</p><p id="live" class="sr-only" aria-live="polite"></p></footer>
 <div id="bar"></div>
 
 <script>
@@ -514,7 +534,22 @@ body.static #hint{display:none}
     bar.style.width=((cur+1)/n*100)+'%';count.textContent=(cur+1)+' / '+n;
     if(push!==false) history.replaceState(null,'','#'+(cur+1));
     slides[cur].scrollTop=0;
+    var live=document.getElementById('live');
+    if(live){
+      var label=slides[cur].getAttribute('aria-label')||'';
+      live.textContent='Slide '+(cur+1)+' of '+n+(label?': '+label:'');
+    }
+    syncTab();
   }
+  function syncTab(){
+    var slide=slides[cur];
+    var overflows=slide.scrollHeight>slide.clientHeight+13||slide.scrollWidth>slide.clientWidth+13;
+    slides.forEach(function(sl,j){
+      if(j===cur&&overflows) sl.tabIndex=0;
+      else sl.removeAttribute('tabindex');
+    });
+  }
+  window.addEventListener('resize',syncTab);
   function fromHash(){var h=parseInt(location.hash.slice(1),10);return isNaN(h)?0:h-1;}
   go(fromHash(),false);
   window.addEventListener('hashchange',function(){go(fromHash(),false);});
@@ -524,6 +559,13 @@ body.static #hint{display:none}
     // the focused link or button (Enter on "Previous" used to go forward)
     if(e.altKey||e.ctrlKey||e.metaKey) return;
     if((k==='Enter'||k===' ')&&e.target.closest&&e.target.closest('a,button,input,select,textarea,summary')) return;
+    var slide=slides[cur];
+    var inSlide=e.target===slide||(slide.contains&&slide.contains(e.target));
+    if(inSlide&&slide.scrollHeight>slide.clientHeight+1){
+      var room=slide.scrollHeight-slide.clientHeight-1;
+      if((k==='ArrowDown'||k==='PageDown'||k===' ')&&slide.scrollTop<room) return;
+      if((k==='ArrowUp'||k==='PageUp')&&slide.scrollTop>1) return;
+    }
     if(['ArrowRight','ArrowDown','PageDown',' ','Enter'].indexOf(k)>-1){e.preventDefault();go(cur+1);}
     else if(['ArrowLeft','ArrowUp','PageUp','Backspace'].indexOf(k)>-1){e.preventDefault();go(cur-1);}
     else if(k==='Home'){go(0);} else if(k==='End'){go(n-1);}

@@ -57,7 +57,7 @@ function cardHtml(entry) {
   const goal = entry.goal ? `<p class="goal">${esc(entry.goal)}</p>` : '';
   const dots = [1, 2, 3, 4, 5].map((i) => `<i class="${i <= entry.level ? 'on' : ''}"></i>`).join('');
   const sources = entry.sources.map((source) => `<a href="${esc(source.url)}" target="_blank" rel="noopener">${esc(source.label)} (${esc(source.date)}) ↗</a>`).join('');
-  return `<article class="card" id="${slug}" tabindex="-1"><h3><span class="sys">${esc(entry.system)}</span><span class="lvl${low}">${entry.level}/5 · ${esc(D.levels[entry.level])}</span></h3><button type="button" class="copylink" data-slug="${slug}" data-name="${esc(entry.system)}" aria-label="Copy link to ${esc(entry.system)}">Copy link</button><div class="dots">${dots}</div><span class="tag">${esc(entry.type)}${neck}</span><div class="ex">${esc(entry.example)}</div><p>${esc(entry.status)}</p><p><b>Bottleneck:</b> ${esc(entry.bottleneck)}</p>${goal}<div class="src">${sources}</div></article>`;
+  return `<article class="card" id="${slug}" tabindex="-1"><h3><span class="sys">${esc(entry.system)}</span><span class="lvl${low}">${entry.level}/5 · ${esc(D.levels[entry.level])}</span></h3><button type="button" class="copylink" data-slug="${slug}" data-name="${esc(entry.system)}" aria-label="Copy link to ${esc(entry.system)}">Copy link</button><div class="dots" aria-hidden="true">${dots}</div><span class="tag">${esc(entry.type)}${neck}</span><div class="ex">${esc(entry.example)}</div><p>${esc(entry.status)}</p><p><b>Bottleneck:</b> ${esc(entry.bottleneck)}</p>${goal}<div class="src">${sources}</div></article>`;
 }
 
 function syncUrl() {
@@ -147,9 +147,12 @@ function markCopied(button, name, ok) {
       : `Could not copy the link to ${name}. It is in the address bar.`;
   }
   button.textContent = ok ? 'Copied' : 'Copy link';
+  button.setAttribute('aria-label', ok ? `Copied link to ${name}` : `Copy link to ${name}`);
   if (ok) {
     setTimeout(() => {
-      if (button.isConnected) button.textContent = 'Copy link';
+      if (!button.isConnected) return;
+      button.textContent = 'Copy link';
+      button.setAttribute('aria-label', `Copy link to ${name}`);
     }, 1600);
   }
 }
