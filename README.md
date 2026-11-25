@@ -25,7 +25,7 @@ Each system card has a **Copy link** button. The anchor is a slug of the system 
 
 ## Tests
 
-No install step. From the repo root:
+Tracker data and view logic need no install. From the repo root:
 
 ```sh
 node tests/validate-data.mjs
@@ -33,6 +33,17 @@ node --test tests/view.test.mjs
 ```
 
 `validate-data.mjs` checks `tracker/data.json`. `view.test.mjs` checks shared-view query strings, slug uniqueness across `data.json`, and filter/sort. CI runs both on pull requests.
+
+### Accessibility check
+
+The accessibility check is dev tooling (axe-core and headless Chrome). The site itself stays plain HTML, CSS, and JavaScript with no dependencies.
+
+```sh
+npm ci
+npm run a11y
+```
+
+That serves the repo on a local port and runs axe-core against the home page, every deck slide (arrow keys, Home, and End), and the tracker after `data.json` has loaded and the cards have rendered. It uses a desktop viewport and a narrow one, and fails on serious or critical violations. Text that sits on a gradient is also measured from the rendered pixels, because axe cannot score those backgrounds, along with the search placeholder color. CI runs this on pull requests and on pushes to `main` (`.github/workflows/a11y.yml`).
 
 ## Run it locally
 

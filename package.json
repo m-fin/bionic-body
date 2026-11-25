@@ -1,0 +1,14 @@
+{
+  "name": "bionic-body",
+  "private": true,
+  "type": "module",
+  "description": "Dev tooling only. The published site is plain HTML, CSS, and JavaScript with no dependencies.",
+  "scripts": {
+    "test": "node tests/validate-data.mjs && node --test tests/view.test.mjs",
+    "a11y": "node tests/a11y.mjs"
+  },
+  "devDependencies": {
+    "axe-core": "^4.11.0",
+    "puppeteer": "^24.30.0"
+  }
+}
